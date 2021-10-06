@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::post('/encuesta', 'EncuestaController@store');
+Route::get('/encuesta', 'EncuestaController@index');
+
+Route::get('/encuesta-download-excel', 'EncuestaController@downloadExcel')->name('excel.encuesta');
+
+Route::get('/encuesta-q1-name', 'EncuestaController@getCountByName');
+Route::get('/encuesta-q2-genero', 'EncuestaController@getCountByGenero');
+Route::get('/encuesta-q3-hobby', 'EncuestaController@getCountByHobby');
+Route::get('/encuesta-q4-dedicacion', 'EncuestaController@getCountByDedicacion');
